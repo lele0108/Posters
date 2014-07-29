@@ -11,6 +11,7 @@ var CustomerSchema   = new Schema({
 	address_country: String,
 	email: String,
 	phone: Number,
+	lobId: String,
 });
 
 module.exports = mongoose.model('Customer', CustomerSchema);

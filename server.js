@@ -42,7 +42,6 @@ router.route('/buy')
 
 	// create a bear (accessed at POST http://localhost:8080/bears)
 	.post(function(req, res) {
-		
 		var customer = new Customer();		// create a new instance of the Bear model
 		customer.name = req.body.name;  // set the bears name (comes from the request)
 		customer.email = req.body.email;
@@ -53,7 +52,18 @@ router.route('/buy')
 		customer.address_zip = req.body.address_zip;
 		customer.address_country = req.body.address_country;
 		customer.phone = req.body.phone;
-		console.log(req.body.name);
+		stripe.customers.create({
+  			description: 'Customer for test@example.com',
+  			card: "tok_4UIgUl9k4kD42Z",
+  			email: customer.email, // obtained with Stripe.js
+			}, function(err, customer) {
+  		// asynchronously called
+  			if (err) {
+  				console.log(err);
+  			} else {
+  				console.log("costomer created");
+  			}
+		});
 		Lob.addresses.create({
 		  name: customer.name,
 		  email: customer.email,
@@ -65,16 +75,13 @@ router.route('/buy')
 		  address_zip: customer.address_zip,
 		  address_country: customer.address_country,
 		}, function (err, res) {
-		  console.log(err, res);
-		});
-
-		customer.save(function(err) {
+		  customer.lobId = res.id;
+		  customer.save(function(err) {
 			if (err)
-				res.send(err);
-
-			res.json({ message: 'Poster has been purchased and sent to printing!' });
+				console.log(err);
+			});
 		});
-
+		res.json({ message: 'Poster has been purchased and sent to printing!' });
 		
 	});
 
