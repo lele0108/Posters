@@ -13,7 +13,7 @@ var app        = express();
 // configure app
 app.use(bodyParser());
 
-var port     = process.env.PORT || 8080; // set our port
+var port     = process.env.PORT || 5000; // set our port
 
 var mongoose   = require('mongoose');
 mongoose.connect('mongodb://admin:admin@kahana.mongohq.com:10043/poster_buyers'); // connect to our database
