@@ -5,8 +5,8 @@
 var express    = require('express');
 var bodyParser = require('body-parser');
 var stripe = require('stripe')('sk_mmRSQtlVIWr9bYa7usQPiuaeOX7y9');
-var Lob = require('lob');
-Lob = new Lob('test_74cdde84e4e9c73a11d92b9b8922001c982');
+//var Lob = require('lob');
+//Lob = new Lob('test_74cdde84e4e9c73a11d92b9b8922001c982');
 var app        = express();
 
 // configure app
@@ -59,12 +59,12 @@ router.route('/buy')
 			}, function(err, customer) {
   		// asynchronously called
   			if (err) {
-  				console.log(err);
+  				res.json({ message: 'Error, try again' });
   			} else {
-  				console.log("costomer created");
+  				res.json({ message: 'Poster has been purchased and sent to printing!' });
   			}
 		});
-		Lob.addresses.create({
+		/*Lob.addresses.create({
 		  name: customer.name,
 		  email: customer.email,
 		  phone: customer.phone,
@@ -80,8 +80,8 @@ router.route('/buy')
 			if (err)
 				console.log(err);
 			});
-		});
-		res.json({ message: 'Poster has been purchased and sent to printing!' });
+		});*/
+		//res.json({ message: 'Poster has been purchased and sent to printing!' });
 		
 	});
 
