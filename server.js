@@ -64,6 +64,10 @@ router.route('/buy')
   				res.json({ message: 'Poster has been purchased and sent to printing!' });
   			}
 		});
+		customer.save(function(err) {
+			if (err)
+				console.log(err);
+		});
 		/*Lob.addresses.create({
 		  name: customer.name,
 		  email: customer.email,
