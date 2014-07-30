@@ -6,7 +6,7 @@
     "morgan": "~1.0.0",
     "mongoose": "~3.6.13",
     "body-parser": "~1.0.1",
-    "lob": "2.x",
+    "lob": "^2.1.1",
     "stripe": "2.x",
     "logfmt": "1.x"
   },
