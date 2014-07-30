@@ -5,7 +5,7 @@
 var express    = require('express');
 var bodyParser = require('body-parser');
 var stripe = require('stripe')('sk_mmRSQtlVIWr9bYa7usQPiuaeOX7y9');
-var Lob = require('lob');
+var Lob = require('Lob');
 Lob = new Lob('test_74cdde84e4e9c73a11d92b9b8922001c982');
 var app        = express();
 
