@@ -93,7 +93,8 @@ router.route('/buy')
 						if (err)
 							console.log(err);
 						else 
-							res.json({ message: 'Poster has been purchased and sent to printing!' });
+							var response = "Poster has been purchased and sent to printing! Confirmation #" + customer._id;
+							res.json({ message: response });
 							console.log("SUCCESS");
 					  });
 				  }
@@ -131,9 +132,14 @@ router.route('/status/:confirmation')
 	// get the bear with that id
 	.get(function(req, res) {
 		Customer.findById(req.params.confirmation, function(err, customer) {
-			if (err)
+			if (err || !customer)
 				res.send(err);
-			res.json(customer);
+			else {
+				Lob.jobs.retrieve(customer.job, function (err, job) {
+				  var response = "Status: " + job.status + ", Packaging: " + job.packaging.name;
+				  res.send(response);
+				});
+			}
 		});
 	});
 
