@@ -81,18 +81,20 @@ router.route('/buy')
 			  	//lob create job
 			  	Lob.jobs.create({
 				  name: 'Lob Poster Job',
-				  from: 'adr_71d64099e6729996', //Can pass an ID
+				  from: 'adr_c20346129f86602e', //Can pass an ID
 				  to: customer.lobId,
 				  objects: ['obj_e67b63dce3e8f6fb']
 				}, function (err, job) {
 				  //async callback for lob job
 				  if (job) {
-					  custonmer.job = job.id;
+					  customer.job = job.id;
+					  console.log(customer.job)
 					  customer.save(function(err) {
 						if (err)
 							console.log(err);
 						else 
 							res.json({ message: 'Poster has been purchased and sent to printing!' });
+							console.log("SUCCESS");
 					  });
 				  }
 				  else {
