@@ -8,12 +8,11 @@
     "body-parser": "~1.0.1",
     "lob": "^2.1.1",
     "stripe": "2.x",
-    "logfmt": "1.x"
   },
   "scripts": {
     "start": "node server.js"
   },
-  "description": "Using the new Express 4.0 Router to build an API",
+  "description": "API for calling Lob and charging using Stripe",
   "version": "0.0.1",
   "devDependencies": {},
   "repository": {

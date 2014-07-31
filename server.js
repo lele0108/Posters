@@ -93,8 +93,7 @@ router.route('/buy')
 						if (err)
 							res.json(400, { message: err });
 						else 
-							var response = "Poster has been purchased and sent to printing! Confirmation #" + customer._id;
-							res.json({ message: response });
+							res.json({ message: "Poster has been purchased and sent to printing!", confirmation: customer._id});
 							console.log("SUCCESS");
 					  });
 				  }
@@ -115,17 +114,7 @@ router.route('/buy')
 		
 	});
 
-	// get all the bears (accessed at GET http://localhost:8080/api/bears)
-	/*.get(function(req, res) {
-		Bear.find(function(err, bears) {
-			if (err)
-				res.send(err);
-
-			res.json(bears);
-		});
-	});*/
-
-// on routes that end in /bears/:bear_id
+// on routes that end in /status/:confirmation
 // ----------------------------------------------------
 router.route('/status/:confirmation')
 
@@ -137,41 +126,11 @@ router.route('/status/:confirmation')
 			else {
 				Lob.jobs.retrieve(customer.job, function (err, job) {
 				  var response = "Status: " + job.status + ", Packaging: " + job.packaging.name;
-				  res.send(response);
+				  res.send({ name: customer.name, status: job.status, packaging: job.packaging.name, tracking: job.tracking});
 				});
 			}
 		});
 	});
-
-	// update the bear with this id
-	/*.put(function(req, res) {
-		Bear.findById(req.params.confirmation, function(err, bear) {
-
-			if (err)
-				res.send(err);
-
-			bear.name = req.body.name;
-			bear.save(function(err) {
-				if (err)
-					res.send(err);
-
-				res.json({ message: 'Bear updated!' });
-			});
-
-		});
-	})
-
-	// delete the bear with this id
-	.delete(function(req, res) {
-		Bear.remove({
-			_id: req.params.bear_id
-		}, function(err, bear) {
-			if (err)
-				res.send(err);
-
-			res.json({ message: 'Successfully deleted' });
-		});
-	});*/
 
 
 // REGISTER OUR ROUTES -------------------------------
