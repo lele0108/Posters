@@ -11,22 +11,22 @@ Requires MongoDB.
 ###POST /api/buy:
 
 ####parameters:
-name: String
-address_line1: String
-address_line2: String (optional)
-address_city: String
-address_state: String
-address_zip: Number
-address_country: String
-email: String
-phone: Number
-stripe_token: String
+name: String<br>
+address_line1: String<br>
+address_line2: String (optional)<br>
+address_city: String<br>
+address_state: String<br>
+address_zip: Number<br>
+address_country: String<br>
+email: String<br>
+phone: Number<br>
+stripe_token: String<br>
 
 ####response:
-200OK
-{
-  "message": "Poster has been purchased and sent to printing! Confirmation #53d9e20a345ef2aa0f000001"
-}
+200OK<br>
+{<br>
+  "message": "Poster has been purchased and sent to printing! Confirmation #53d9e20a345ef2aa0f000001"<br>
+}<br>
 
 ### GET /api/status/:confirmation
 
@@ -34,8 +34,8 @@ stripe_token: String
 confirmation: String (MongoDB _id)
 
 ####response:
-200OK
-Status: processed, Packaging: Smart Packaging
+200OK<br>
+Status: processed, Packaging: Smart Packaging<br>
 
 ##License
 (The MIT License)
