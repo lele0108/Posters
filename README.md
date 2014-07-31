@@ -34,9 +34,13 @@ stripe_token: String<br>
 confirmation: String (MongoDB _id)
 
 ####response:
-200OK<br>
-Status: processed, Packaging: Smart Packaging<br>
-
+200OK
+{<br>
+  "name": "Jimmy Liu",<br>
+  "status": "processed",<br>
+  "packaging": "Smart Packaging",<br>
+  "tracking": null<br>
+}<br>
 ##License
 (The MIT License)
 
