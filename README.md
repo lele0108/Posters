@@ -6,11 +6,11 @@ Built by the fine folks at Hacker Supply Co.
 
 Requires MongoDB.
 
-API usage:
+##API usage:
 
-##POST /api/buy:
+###POST /api/buy:
 
-###parameters:
+####parameters:
 name: String
 address_line1: String
 address_line2: String (optional)
@@ -22,18 +22,18 @@ email: String
 phone: Number
 stripe_token: String
 
-###response:
+####response:
 200OK
 {
   "message": "Poster has been purchased and sent to printing! Confirmation #53d9e20a345ef2aa0f000001"
 }
 
-## GET /api/status/:confirmation
+### GET /api/status/:confirmation
 
-###paramters:
+####paramters:
 confirmation: String (MongoDB _id)
 
-###response:
+####response:
 200OK
 Status: processed, Packaging: Smart Packaging
 
