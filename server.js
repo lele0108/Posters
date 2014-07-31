@@ -91,7 +91,7 @@ router.route('/buy')
 					  console.log(customer.job)
 					  customer.save(function(err) {
 						if (err)
-							console.log(err);
+							res.json(400, { message: err });
 						else 
 							var response = "Poster has been purchased and sent to printing! Confirmation #" + customer._id;
 							res.json({ message: response });
@@ -99,17 +99,17 @@ router.route('/buy')
 					  });
 				  }
 				  else {
-				  	res.json({ message: err});
+				  	res.json(400, { message: err});
 				  }
 				});
 			  }
 			  else {
-			  	res.json({ message: err});
+			  	res.json(400, { message: err});
 			  }
 			});
 		  }
 		  else {
-		  	res.json({ message: err});
+		  	res.json(400, { message: err});
 		  }
 		});
 		
@@ -133,7 +133,7 @@ router.route('/status/:confirmation')
 	.get(function(req, res) {
 		Customer.findById(req.params.confirmation, function(err, customer) {
 			if (err || !customer)
-				res.send(err);
+				res.send(400, { message: err });
 			else {
 				Lob.jobs.retrieve(customer.job, function (err, job) {
 				  var response = "Status: " + job.status + ", Packaging: " + job.packaging.name;
