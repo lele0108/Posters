@@ -12,6 +12,9 @@ var CustomerSchema   = new Schema({
 	email: String,
 	phone: Number,
 	lobId: String,
+	stripe_token: String,
+	charge: Boolean,
+	job: String,
 });
 
 module.exports = mongoose.model('Customer', CustomerSchema);

@@ -52,40 +52,63 @@ router.route('/buy')
 		customer.address_zip = req.body.address_zip;
 		customer.address_country = req.body.address_country;
 		customer.phone = req.body.phone;
-		stripe.customers.create({
-  			description: 'Customer for test@example.com',
-  			card: "tok_4UIgUl9k4kD42Z",
-  			email: customer.email, // obtained with Stripe.js
-			}, function(err, customer) {
-  		// asynchronously called
-  			if (err) {
-  				res.json({ message: 'Error, try again' });
-  			} else {
-  				res.json({ message: 'Poster has been purchased and sent to printing!' });
-  			}
-		});
-		customer.save(function(err) {
-			if (err)
-				console.log(err);
-		});
-		/*Lob.addresses.create({
-		  name: customer.name,
-		  email: customer.email,
-		  phone: customer.phone,
-		  address_line1: customer.address_line1,
-		  address_line2: customer.address_line2,
-		  address_city: customer.address_city,
-		  address_state: customer.address_state,
-		  address_zip: customer.address_zip,
-		  address_country: customer.address_country,
-		}, function (err, res) {
-		  customer.lobId = res.id;
-		  customer.save(function(err) {
-			if (err)
-				console.log(err);
+		customer.stripe_token = req.body.stripe_token;
+		//stripe charge the credit card
+		stripe.charges.create({
+		  amount: 400,
+		  currency: "usd",
+		  card: customer.stripe_token, // obtained with Stripe.js
+		  description: "Charge for test@example.com"
+		}, function(err, charge) {
+		  //async callback for stripe creating charge
+		  if (!err && !customer.charge) {
+		  	customer.charge = charge.paid;
+		  	//lob call for creating customer
+		  	Lob.addresses.create({
+			  name: customer.name,
+			  email: customer.email,
+			  phone: customer.phone,
+			  address_line1: customer.address_line1,
+			  address_line2: customer.address_line2,
+			  address_city: customer.address_city,
+			  address_state: customer.address_state,
+			  address_zip: customer.address_zip,
+			  address_country: customer.address_country,
+			}, function (err, address) {
+			  //async callback for stripe address
+			  customer.lobId = address.id;
+			  if (!err) {
+			  	//lob create job
+			  	Lob.jobs.create({
+				  name: 'Lob Poster Job',
+				  from: 'adr_71d64099e6729996', //Can pass an ID
+				  to: customer.lobId,
+				  objects: ['obj_e67b63dce3e8f6fb']
+				}, function (err, job) {
+				  //async callback for lob job
+				  if (job) {
+					  custonmer.job = job.id;
+					  customer.save(function(err) {
+						if (err)
+							console.log(err);
+						else 
+							res.json({ message: 'Poster has been purchased and sent to printing!' });
+					  });
+				  }
+				  else {
+				  	res.json({ message: err});
+				  }
+				});
+			  }
+			  else {
+			  	res.json({ message: err});
+			  }
 			});
-		});*/
-		//res.json({ message: 'Poster has been purchased and sent to printing!' });
+		  }
+		  else {
+		  	res.json({ message: err});
+		  }
+		});
 		
 	});
 
