@@ -1,0 +1,14 @@
+.header {
+  margin-top: 50px;
+  margin-bottom: 50px; }
+
+.menu {
+  margin-top: 10px; }
+  .menu li {
+    font-weight: 600;
+    margin-right: 50px;
+    letter-spacing: 1px; }
+  .menu ul li {
+    display: inline !important; }
+  .menu li:hover {
+    border-bottom: 3px black solid; }
