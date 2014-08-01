@@ -15,5 +15,11 @@
   .menu li:hover {
     border-bottom: 3px black solid; }
 
+.slider {
+  margin-bottom: 30px; }
+
 .slider-contents {
   padding: 0px 15px 0px 15px; }
+
+.posters {
+  margin-bottom: 50px; }
