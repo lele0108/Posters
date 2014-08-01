@@ -15,8 +15,15 @@
   .menu li:hover {
     border-bottom: 3px black solid; }
 
+.about {
+  margin-bottom: 70px; }
+
+.message p {
+  font-weight: 500;
+  font-family: 'Raleway', sans-serif; }
+
 .slider {
-  margin-bottom: 30px; }
+  margin-bottom: 50px; }
 
 .slider-contents {
   padding: 0px 15px 0px 15px; }
