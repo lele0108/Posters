@@ -22,10 +22,11 @@ email: String<br>
 phone: Number<br>
 stripe_token: String<br>
 
-####response:
+#####response:
 200OK<br>
 {<br>
-  "message": "Poster has been purchased and sent to printing! Confirmation #53d9e20a345ef2aa0f000001"<br>
+  "message": "Poster has been purchased and sent to printing!",<br>
+  "confirmation": "53d9e428a4338e1610000001"<br>
 }<br>
 
 ### GET /api/status/:confirmation
@@ -35,8 +36,12 @@ confirmation: String (MongoDB _id)
 
 ####response:
 200OK<br>
-Status: processed, Packaging: Smart Packaging<br>
-
+{<br>
+  "name": "Jimmy Liu",<br>
+  "status": "processed",<br>
+  "packaging": "Smart Packaging",<br>
+  "tracking": null<br>
+}<br>
 ##License
 (The MIT License)
 
