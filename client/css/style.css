@@ -8,7 +8,12 @@
     font-weight: 600;
     margin-right: 50px;
     letter-spacing: 1px; }
+  .menu #last {
+    margin-right: 0px; }
   .menu ul li {
     display: inline !important; }
   .menu li:hover {
     border-bottom: 3px black solid; }
+
+.slider-contents {
+  padding: 0px 15px 0px 15px; }

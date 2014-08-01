@@ -10,6 +10,9 @@
 		margin-right:50px;
 		letter-spacing:1px;
 	}
+	#last {
+		margin-right:0px;
+	}
 	ul li {
 		display:inline !important;
 	}
@@ -17,3 +20,8 @@
 		border-bottom:3px black solid;
 	}
 }
+
+.slider-contents {
+	padding: 0px 15px 0px 15px;
+}
+
