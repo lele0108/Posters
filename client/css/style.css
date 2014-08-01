@@ -30,3 +30,10 @@
 
 .posters {
   margin-bottom: 50px; }
+
+.footer {
+  margin-top: 30px;
+  margin-bottom: 30px; }
+  .footer p {
+    font-weight: 500;
+    font-family: 'Raleway', sans-serif; }
