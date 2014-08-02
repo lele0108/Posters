@@ -133,8 +133,8 @@ router.route('/status/:confirmation')
 		});
 	});
 
-//create item
 
+//create item
 router.route('/item/add') 
 
 	.post(function(req, res) {
@@ -147,6 +147,17 @@ router.route('/item/add')
 		});
 	});
 
+//get items
+router.route('/item') 
+
+	.get(function(req, res) {
+		Item.find(function(err, item) {
+			if (err)
+				res.send(err);
+
+			res.json(item);
+		});
+	});
 
 // REGISTER OUR ROUTES -------------------------------
 app.use('/api', router);
