@@ -9,6 +9,16 @@ $(document).ready(function(){
 	});
 
 	[].slice.call( document.querySelectorAll('a[href="#"') ).forEach( function(el) {
-				el.addEventListener( 'click', function(ev) { ev.preventDefault(); } );
-			} );
+		el.addEventListener( 'click', function(ev) { ev.preventDefault(); } );
+	} );
+});
+
+$(document).scroll(function(){
+    if($('body').scrollTop() > 0)
+    {   
+        $('.header').css({"border-bottom":"1px solid #ecf0f1"});
+    }
+    else if ($('body').scrollTop() <= 0) {
+    	$('.header').css({"border-bottom":"none"});
+    }
 });

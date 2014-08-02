@@ -1,6 +1,6 @@
 .header {
-  margin-top: 50px;
-  margin-bottom: 50px; }
+  background-color: white;
+  padding: 35px 0px 35px 0px; }
 
 .menu {
   margin-top: 10px; }
@@ -9,8 +9,13 @@
     margin-right: 50px;
     letter-spacing: 1px;
     font-family: 'Raleway', sans-serif; }
+  .menu li a {
+    color: black;
+    text-decoration: none; }
   .menu #last {
     margin-right: 0px; }
+  .menu #current {
+    border-bottom: 3px black solid; }
   .menu ul li {
     display: inline !important; }
   .menu li:hover {
@@ -24,6 +29,7 @@
   font-family: 'Raleway', sans-serif; }
 
 .slider {
+  margin-top: 130px;
   margin-bottom: 50px; }
 
 .slider-contents {
