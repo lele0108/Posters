@@ -151,6 +151,9 @@ router.route('/item/add')
 router.route('/item') 
 
 	.get(function(req, res) {
+		if (req.query.limit != null) {
+			
+		}
 		Item.find(function(err, item) {
 			if (err)
 				res.send(err);
