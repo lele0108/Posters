@@ -11,6 +11,11 @@ $(document).ready(function(){
 	[].slice.call( document.querySelectorAll('a[href="#"') ).forEach( function(el) {
 		el.addEventListener( 'click', function(ev) { ev.preventDefault(); } );
 	} );
+
+	$("#top").click(function() {
+  		$("html, body").animate({ scrollTop: 0 }, "slow");
+  		return false;
+	});
 });
 
 $(document).scroll(function(){

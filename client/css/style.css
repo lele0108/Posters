@@ -3,7 +3,7 @@
   padding: 35px 0px 35px 0px; }
 
 .menu {
-  margin-top: 10px; }
+  margin-top: 5px; }
   .menu li {
     font-weight: 600;
     margin-right: 50px;
@@ -38,9 +38,52 @@
 .posters {
   margin-bottom: 50px; }
 
+.items {
+  margin-top: 150px; }
+
+.item {
+  padding: 0px 15px 0px 15px;
+  font-family: 'Raleway', sans-serif; }
+  .item h1 {
+    font-weight: 700;
+    margin-bottom: 20px; }
+  .item h5 {
+    color: gray;
+    margin-top: 0px;
+    margin-bottom: -20px;
+    padding: 5px 15px 5px 5px; }
+
+.reconmendations {
+  font-family: 'Raleway', sans-serif;
+  margin-top: 100px;
+  marginp-bottom: 50px;
+  padding: 0px 15px 0px 15px; }
+  .reconmendations h1 {
+    font-weight: 300; }
+  .reconmendations a {
+    color: black; }
+  .reconmendations img {
+    margin-bottom: 20px; }
+  .reconmendations img:hover {
+    opacity: 0.7; }
+
+.cart button {
+  color: white;
+  background-color: black;
+  border: none;
+  padding: 10px 20px 10px 20px; }
+.cart button:hover {
+  color: black;
+  background-color: white;
+  border: 1px solid black; }
+.cart p {
+  margin: 0px; }
+
 .footer {
   margin-top: 30px;
   margin-bottom: 30px; }
   .footer p {
     font-weight: 500;
     font-family: 'Raleway', sans-serif; }
+  .footer a:hover {
+    opacity: 0.7; }
