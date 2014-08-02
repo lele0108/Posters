@@ -17,6 +17,7 @@ var port     = process.env.PORT || 8080; // set our port
 var mongoose   = require('mongoose');
 mongoose.connect('mongodb://admin:admin@kahana.mongohq.com:10043/poster_buyers'); // connect to our database
 var Customer     = require('./app/models/customer');
+var Item         = require('./app/models/item');
 
 // ROUTES FOR OUR API
 // =============================================================================
@@ -129,6 +130,20 @@ router.route('/status/:confirmation')
 				  res.send({ name: customer.name, status: job.status, packaging: job.packaging.name, tracking: job.tracking});
 				});
 			}
+		});
+	});
+
+//create item
+
+router.route('/item/add') 
+
+	.post(function(req, res) {
+		var item = new Item();
+		item.save(function(err) {
+			if (err)
+				res.json(400, { message: err });
+			else 
+				res.json({ message: "Item Created!"});
 		});
 	});
 
