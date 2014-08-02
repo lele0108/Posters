@@ -139,11 +139,19 @@ router.route('/item/add')
 
 	.post(function(req, res) {
 		var item = new Item();
+		item.imgLarge = req.body.imgLarge;
+		item.imgSmall = req.body.imgSmall;
+		item.name = req.body.name;
+		item.price = req.body.price;
+		item.desc = req.body.desc;
+		item.type = req.body.type;
+		item.lobId = req.body.lobId;
 		item.save(function(err) {
 			if (err)
 				res.json(400, { message: err });
-			else 
+			else {
 				res.json({ message: "Item Created!"});
+			}
 		});
 	});
 
@@ -169,6 +177,20 @@ router.route('/item')
 				res.json(item);
 			});
 		}
+	});
+
+//get specific item
+router.route('/item/:id')
+
+	// get the bear with that id
+	.get(function(req, res) {
+		Item.findById(req.params.id, function(err, item) {
+			if (err || !item)
+				res.send(400, { message: err });
+			else {
+				res.send(item);
+			}
+		});
 	});
 
 // REGISTER OUR ROUTES -------------------------------
