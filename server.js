@@ -152,14 +152,23 @@ router.route('/item')
 
 	.get(function(req, res) {
 		if (req.query.limit != null) {
-			
+			var q = Item.find().limit(req.query.limit);
+			q.exec(function(err, posts) {
+			     if (err) {
+			     	res.json(err);
+			     }
+			     else 
+			     	res.json(posts);
+			});
 		}
-		Item.find(function(err, item) {
-			if (err)
-				res.send(err);
+		else {
+			Item.find(function(err, item) {
+				if (err)
+					res.send(err);
 
-			res.json(item);
-		});
+				res.json(item);
+			});
+		}
 	});
 
 // REGISTER OUR ROUTES -------------------------------
