@@ -53,6 +53,7 @@
 	hackerSupply.controller('itemController', function($scope, $http, $routeParams) {
 		//$scope.message = 'Look! I am an about page.';
 		$scope.item = {};
+		$scope.reconmend = {};
 		var url = "http://hackerposter.herokuapp.com/api/item/" + $routeParams.itemId;
 		console.log(url);
 		$http({method: 'GET', url: url}).
@@ -63,6 +64,15 @@
 		    error(function(data, status, headers, config) {
 		      console.log(status);
 		});
+		$http({method: 'GET', url: 'http://hackerposter.herokuapp.com/api/item?limit=4'}).
+		    success(function(data, status, headers, config) {
+		      $scope.reconmend = data;
+		      console.log($scope.item);
+		    }).
+		    error(function(data, status, headers, config) {
+		      console.log(status);
+		});
+
 	});
 
 	//hackerSupply.controller('contactController', function($scope) {

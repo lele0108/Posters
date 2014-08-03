@@ -27,21 +27,12 @@
         <div class="row">
           <div class="reconmendations">
               <center><h1>You may also like</h1></center><br>
-              <div class="col-lg-3">
-                <a href="#"><img src="img/postersmall.jpeg" width="100%">
-                <center><p>If your user has problems, it's our problem</p></center></a>
-              </div>
-              <div class="col-lg-3">
-                <a href="#"><img src="img/postersmall.jpeg" width="100%">
-                <center><p>If your user has problems, it's our problem</p></center></a>
-              </div>
-              <div class="col-lg-3">
-                <a href="#"><img src="img/postersmall.jpeg" width="100%">
-                <center><p>If your user has problems, it's our problem</p></center></a>
-              </div>
-              <div class="col-lg-3">
-                <a href="#"><img src="img/postersmall.jpeg" width="100%">
-                <center><p>If your user has problems, it's our problem</p></center></a>
+
+              <div ng-repeat="item in reconmend">
+                <div class="col-lg-3">
+                  <a href="#"><img ng-src="{{item.imgSmall}}" width="100%">
+                  <center><p>{{item.name}}</p></center></a>
+                </div>
               </div>
           </div>
         </div>
