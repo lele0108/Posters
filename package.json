@@ -7,7 +7,7 @@
     "mongoose": "~3.6.13",
     "body-parser": "~1.0.1",
     "lob": "^2.1.1",
-    "stripe": "2.x",
+    "stripe": "2.x"
   },
   "scripts": {
     "start": "node server.js"
