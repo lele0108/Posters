@@ -3,7 +3,6 @@
 	// create the module and name it hackerSupply
         // also include ngRoute for all our routing needs
 	var hackerSupply = angular.module('hackerSupply', ['ngRoute']);
-	var MainCtrl = function($scope, $timeout, ngProgress) { }
 
 	// configure our routes
 	hackerSupply.config(function($routeProvider) {
@@ -29,17 +28,26 @@
 	});
 
 	// create the controller and inject Angular's $scope
-	hackerSupply.controller('mainController', function($scope) {
+	hackerSupply.controller('mainController', function($scope, $http) {
 		// create a message to display in our view
 		//$scope.message = 'Everyone come and see how good I look!';
-		/*$('.slider-contents').slick({
+		$('.slider-contents').slick({
 			slidesToShow: 1,
 			slidesToScroll: 1,
 			autoplay: true,
 			autoplaySpeed: 5000,
 			arrows: true,
 			accessibility: true,
-		});*/
+		});
+		$scope.myItems = {};
+		$http({method: 'GET', url: 'http://localhost:8080/api/item/'}).
+		    success(function(data, status, headers, config) {
+		      $scope.myItems = data;
+		      console.log($scope.myItems);
+		    }).
+		    error(function(data, status, headers, config) {
+		      console.log(status);
+		});
 	});
 
 	hackerSupply.controller('aboutController', function($scope) {

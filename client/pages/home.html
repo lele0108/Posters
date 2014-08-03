@@ -38,89 +38,53 @@
 
           <div class="col-lg-12">
 
-            <div class="row">
-
-              <div class="col-lg-4">
-                <div class="grid">
-                  <figure class="effect-sadie">
-                    <img src="img/poster.jpg" width="100%" alt="img01"/>
-                    <figcaption>
-                      <h2>Poster <span>One</span></h2>
-                      <p>Expirenment. Fail. Learn. Repeat.</p>
-                      <a href="#item">View more</a>
-                    </figcaption>     
-                  </figure>
+            <div ng-repeat="item in myItems">
+              <span ng-if="$index % 3 == 0">
+                <br>
+                <div class="row item">
+                  <div class="col-lg-4" ng-if="myItems[$index+0]">
+                    <div class="grid">
+                      <figure class="effect-sadie">
+                        <img ng-src="{{myItems[$index+0].imgLarge}}" width="100%" alt="img01"/>
+                        <figcaption>
+                          <h2>Poster <span>One</span></h2>
+                          <p>{{myItems[$index+0].name}}</p>
+                          <a href="#item">View more</a>
+                        </figcaption>     
+                      </figure>
+                    </div>
+                  </div>
+                  <div class="row">
+                  <div class="col-lg-4" ng-if="myItems[$index+1]">
+                    <div class="grid">
+                      <figure class="effect-sadie">
+                        <img ng-src="{{myItems[$index+1].imgLarge}}" width="100%" alt="img01"/>
+                        <figcaption>
+                          <h2>Poster <span>One</span></h2>
+                          <p>{{myItems[$index+1].name}}</p>
+                          <a href="#item">View more</a>
+                        </figcaption>     
+                      </figure>
+                    </div>
+                  </div>
+                  <div class="row">
+                  <div class="col-lg-4" ng-if="myItems[$index+2]">
+                    <div class="grid">
+                      <figure class="effect-sadie">
+                        <img ng-src="{{myItems[$index+2].imgLarge}}" width="100%" alt="img01"/>
+                        <figcaption>
+                          <h2>Poster <span>One</span></h2>
+                          <p>{{myItems[$index+2].name}}</p>
+                          <a href="#item">View more</a>
+                        </figcaption>     
+                      </figure>
+                    </div>
+                  </div>
                 </div>
-              </div>
-              <div class="col-lg-4">
-                <div class="grid">
-                  <figure class="effect-sadie">
-                    <img src="img/poster.jpg" width="100%" alt="img01"/>
-                    <figcaption>
-                      <h2>Poster <span>Two</span></h2>
-                      <p>Expirenment. Fail. Learn. Repeat.</p>
-                      <a href="#">View more</a>
-                    </figcaption>  
-                  </figure>
-                </div>
-              </div>
-              <div class="col-lg-4">
-                <div class="grid">
-                  <figure class="effect-sadie">
-                    <img src="img/poster.jpg" width="100%" alt="img01"/>
-                    <figcaption>
-                      <h2>Poster <span>Three</span></h2>
-                      <p>Expirenment. Fail. Learn. Repeat.</p>
-                      <a href="#">View more</a>
-                    </figcaption>  
-                  </figure>
-                </div>
-              </div>
-
-            </div> <!--end row!--><br>
-
-            <div class="row">
-
-              <div class="col-lg-4">
-                <div class="grid">
-                  <figure class="effect-sadie">
-                    <img src="img/poster.jpg" width="100%" alt="img01"/>
-                    <figcaption>
-                      <h2>Poster <span>Four</span></h2>
-                      <p>Expirenment. Fail. Learn. Repeat.</p>
-                      <a href="#">View more</a>
-                    </figcaption>  
-                  </figure>
-                </div>
-              </div>
-              <div class="col-lg-4">
-                <div class="grid">
-                  <figure class="effect-sadie">
-                    <img src="img/poster.jpg" width="100%" alt="img01"/>
-                    <figcaption>
-                      <h2>Poster <span>Five</span></h2>
-                      <p>Expirenment. Fail. Learn. Repeat.</p>
-                      <a href="#">View more</a>
-                    </figcaption>     
-                  </figure>
-                </div>
-              </div>
-              <div class="col-lg-4">
-                <div class="grid">
-                  <figure class="effect-sadie">
-                    <img src="img/poster.jpg" width="100%" alt="img01"/>
-                    <figcaption>
-                      <h2>Poster <span>Six</span></h2>
-                      <p>Expirenment. Fail. Learn. Repeat.</p>
-                      <a href="#">View more</a>
-                    </figcaption>  
-                  </figure>
-                </div>
-              </div>
-              
-            </div> <!--end row!-->
+              </span>
+            </div>
           
-          </div>
+          </div><!--end col-lg-12!-->
 
         </div>
       </div>
