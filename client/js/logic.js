@@ -18,6 +18,11 @@
 			.when('/item/:itemId', {
 				templateUrl : 'pages/item.html',
 				controller  : 'itemController'
+			})
+
+			.when('/admin', {
+				templateUrl: 'pages/admin.html',
+				controller: 'adminController'
 			});
 
 			// route for the contact page
@@ -73,6 +78,10 @@
 		      console.log(status);
 		});
 
+	});
+
+	hackerSupply.controller('adminController', function($scope) {
+		//$('.header').hide();
 	});
 
 	//hackerSupply.controller('contactController', function($scope) {

@@ -25,7 +25,7 @@
     <![endif]-->
   </head>
   <body ng-controller="mainController">
-    <div class="header navbar navbar-fixed-top">
+    <div ng-hide="location = '/admin'" class="header navbar navbar-fixed-top">
       <div class="container">
         <div class"row">
 
@@ -57,7 +57,7 @@
     
     </div>
 
-    <div class="footer">
+    <div ng-hide="location = '/admin'" class="footer">
       <div class="container">
         <div class="row">
 
