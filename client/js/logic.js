@@ -15,9 +15,9 @@
 			})
 
 			// route for the about page
-			.when('/item', {
+			.when('/item/:itemId', {
 				templateUrl : 'pages/item.html',
-				controller  : 'aboutController'
+				controller  : 'itemController'
 			});
 
 			// route for the contact page
@@ -40,7 +40,7 @@
 			accessibility: true,
 		});
 		$scope.myItems = {};
-		$http({method: 'GET', url: 'http://localhost:8080/api/item/'}).
+		$http({method: 'GET', url: 'http://hackerposter.herokuapp.com/api/item/'}).
 		    success(function(data, status, headers, config) {
 		      $scope.myItems = data;
 		      console.log($scope.myItems);
@@ -50,8 +50,19 @@
 		});
 	});
 
-	hackerSupply.controller('aboutController', function($scope) {
+	hackerSupply.controller('itemController', function($scope, $http, $routeParams) {
 		//$scope.message = 'Look! I am an about page.';
+		$scope.item = {};
+		var url = "http://hackerposter.herokuapp.com/api/item/" + $routeParams.itemId;
+		console.log(url);
+		$http({method: 'GET', url: url}).
+		    success(function(data, status, headers, config) {
+		      $scope.item = data;
+		      console.log($scope.item);
+		    }).
+		    error(function(data, status, headers, config) {
+		      console.log(status);
+		});
 	});
 
 	//hackerSupply.controller('contactController', function($scope) {
