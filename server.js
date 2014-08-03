@@ -215,6 +215,8 @@ router.route('/item/:id')
 // REGISTER OUR ROUTES -------------------------------
 app.use('/api', router);
 
+app.use(express.static(__dirname + '/client'));
+
 // START THE SERVER
 // =============================================================================
 app.listen(port);
