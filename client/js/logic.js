@@ -32,10 +32,15 @@
 			//});
 	});
 
+	hackerSupply.controller('indexController', function($scope, $route) {
+	});
+
 	// create the controller and inject Angular's $scope
 	hackerSupply.controller('mainController', function($scope, $http) {
 		// create a message to display in our view
 		//$scope.message = 'Everyone come and see how good I look!';
+		$('.header').show();
+		$('.footer').show();
 		$('.slider-contents').slick({
 			slidesToShow: 1,
 			slidesToScroll: 1,
@@ -57,6 +62,9 @@
 
 	hackerSupply.controller('itemController', function($scope, $http, $routeParams) {
 		//$scope.message = 'Look! I am an about page.';
+		$('.header').show();
+		$('.footer').show();
+		$scope.hide = false;
 		$scope.item = {};
 		$scope.reconmend = {};
 		var url = "http://hackerposter.herokuapp.com/api/item/" + $routeParams.itemId;
@@ -81,7 +89,10 @@
 	});
 
 	hackerSupply.controller('adminController', function($scope) {
-		//$('.header').hide();
+		$scope.hide = true;
+		$scope.bodyStyle = {background: "black !important"};
+		$('.header').hide();
+		$('.footer').hide();
 	});
 
 	//hackerSupply.controller('contactController', function($scope) {

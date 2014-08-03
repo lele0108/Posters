@@ -124,3 +124,53 @@ $blackgray: #464646;
 		opacity:0.7;
 	}
 }
+
+.admin {
+	margin-top:50px;
+}
+
+.centerText {
+	margin-top:50px;
+}
+
+.logout {
+	margin-top:40px;
+	button {
+		font-weight:700;
+		font-family: 'Raleway', sans-serif;
+		border: 1px $blackgray solid;
+		float:right;
+		background-color: white;
+		padding: 5px 10px 5px 10px;
+		p {
+			margin:0px;
+		}
+	}
+	button:hover {
+		background-color: $blackgray;
+		color:white;
+	}
+}
+
+.adminBody {
+	margin-top: 80px;
+}
+
+.block {
+	border: 1px solid $blackgray;
+	height:200px;
+	color:white;
+	background-color: $blackgray;
+	padding: 10px 20px 10px 20px;
+	p {
+		font-family: 'Raleway', sans-serif;
+		font-weight:900;
+		font-size:20px;
+		text-align:center;
+	}
+}
+
+.block:hover {
+	background-color:white;
+	color:$blackgray;
+}

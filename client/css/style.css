@@ -87,3 +87,43 @@
     font-family: 'Raleway', sans-serif; }
   .footer a:hover {
     opacity: 0.7; }
+
+.admin {
+  margin-top: 50px; }
+
+.centerText {
+  margin-top: 50px; }
+
+.logout {
+  margin-top: 40px; }
+  .logout button {
+    font-weight: 700;
+    font-family: 'Raleway', sans-serif;
+    border: 1px #464646 solid;
+    float: right;
+    background-color: white;
+    padding: 5px 10px 5px 10px; }
+    .logout button p {
+      margin: 0px; }
+  .logout button:hover {
+    background-color: #464646;
+    color: white; }
+
+.adminBody {
+  margin-top: 80px; }
+
+.block {
+  border: 1px solid #464646;
+  height: 200px;
+  color: white;
+  background-color: #464646;
+  padding: 10px 20px 10px 20px; }
+  .block p {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 900;
+    font-size: 20px;
+    text-align: center; }
+
+.block:hover {
+  background-color: white;
+  color: #464646; }
