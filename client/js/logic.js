@@ -3,7 +3,7 @@
 	// create the module and name it hackerSupply
         // also include ngRoute for all our routing needs
 	var hackerSupply = angular.module('hackerSupply', ['ngRoute']);
-	angular.module('myApp', ['angular-loading-bar'])
+	var MainCtrl = function($scope, $timeout, ngProgress) { }
 
 	// configure our routes
 	hackerSupply.config(function($routeProvider) {
@@ -32,6 +32,14 @@
 	hackerSupply.controller('mainController', function($scope) {
 		// create a message to display in our view
 		//$scope.message = 'Everyone come and see how good I look!';
+		/*$('.slider-contents').slick({
+			slidesToShow: 1,
+			slidesToScroll: 1,
+			autoplay: true,
+			autoplaySpeed: 5000,
+			arrows: true,
+			accessibility: true,
+		});*/
 	});
 
 	hackerSupply.controller('aboutController', function($scope) {
