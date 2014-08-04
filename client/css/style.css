@@ -127,3 +127,49 @@
 .block:hover {
   background-color: white;
   color: #464646; }
+
+.login {
+  margin-top: 15%;
+  margin-bottom: 50px; }
+
+.customInput {
+  border: 1px solid #464646;
+  border-radius: 0px;
+  outline: none;
+  box-shadow: none !important;
+  font-family: 'Raleway', sans-serif; }
+  .customInput:active {
+    border: 1px solid #464646 !important;
+    background-color: #464646;
+    color: white; }
+  .customInput:focus {
+    border: 1px solid #464646 !important;
+    background-color: #464646;
+    color: white; }
+
+::-webkit-input-placeholder {
+  font-family: 'Raleway', sans-serif; }
+
+:-moz-placeholder {
+  /* Firefox 18- */
+  font-family: 'Raleway', sans-serif; }
+
+::-moz-placeholder {
+  /* Firefox 19+ */
+  font-family: 'Raleway', sans-serif; }
+
+:-ms-input-placeholder {
+  font-family: 'Raleway', sans-serif; }
+
+.customBtn {
+  font-weight: 500;
+  font-family: 'Raleway', sans-serif;
+  border: 1px #464646 solid;
+  float: right;
+  background-color: white;
+  padding: 5px 10px 5px 10px; }
+  .customBtn p {
+    margin: 0px; }
+  .customBtn:hover {
+    background-color: #464646;
+    color: white; }

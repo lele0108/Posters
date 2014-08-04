@@ -20,6 +20,11 @@
 				controller  : 'itemController'
 			})
 
+			.when('/login', {
+				templateUrl: 'pages/login.html',
+				controller: 'loginController'
+			})
+
 			.when('/admin', {
 				templateUrl: 'pages/admin.html',
 				controller: 'adminController'
@@ -91,6 +96,11 @@
 	hackerSupply.controller('adminController', function($scope) {
 		$scope.hide = true;
 		$scope.bodyStyle = {background: "black !important"};
+		$('.header').hide();
+		$('.footer').hide();
+	});
+
+	hackerSupply.controller('loginController', function ($scope) {
 		$('.header').hide();
 		$('.footer').hide();
 	});

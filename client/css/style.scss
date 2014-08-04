@@ -174,3 +174,55 @@ $blackgray: #464646;
 	background-color:white;
 	color:$blackgray;
 }
+
+.login {
+	margin-top:15%;
+	margin-bottom:50px;
+}
+
+.customInput {
+	border: 1px solid $blackgray;
+	border-radius:0px;
+	outline: none;
+  	box-shadow:none !important;
+  	font-family: 'Raleway', sans-serif;
+  	&:active {
+  		border:1px solid $blackgray !important;
+  		background-color:$blackgray;
+  		color:white;
+  	}
+  	&:focus {
+  		border:1px solid $blackgray !important;
+  		background-color:$blackgray;
+  		color:white;
+  	}
+}
+
+::-webkit-input-placeholder {
+   	font-family: 'Raleway', sans-serif;
+}
+:-moz-placeholder { /* Firefox 18- */
+	 font-family: 'Raleway', sans-serif;
+}
+::-moz-placeholder {  /* Firefox 19+ */
+	 font-family: 'Raleway', sans-serif;
+}
+:-ms-input-placeholder {  
+	 font-family: 'Raleway', sans-serif;
+}
+
+.customBtn {
+	font-weight:500;
+	font-family: 'Raleway', sans-serif;
+	border: 1px $blackgray solid;
+	float:right;
+	background-color: white;
+	padding: 5px 10px 5px 10px;
+	p {
+		margin:0px;
+	}
+	&:hover {
+		background-color: $blackgray;
+		color:white;
+	}
+}
