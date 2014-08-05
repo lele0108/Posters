@@ -11,7 +11,7 @@
 			// route for the home page
 			.when('/', {
 				templateUrl : 'pages/home.html',
-				controller  : 'indexController'
+				controller  : 'mainController'
 			})
 
 			// route for the about page
@@ -42,7 +42,13 @@
 			//});
 	});
 
-	hackerSupply.controller('indexController', function($scope, $route, $http, $routeParams) {
+	hackerSupply.controller('indexController', function($scope, $route) {
+	});
+
+	// create the controller and inject Angular's $scope
+	hackerSupply.controller('mainController', function($scope, $http) {
+		// create a message to display in our view
+		//$scope.message = 'Everyone come and see how good I look!';
 		$('.header').show();
 		$('.footer').show();
 		$('.slider-contents').slick({
@@ -62,11 +68,6 @@
 		    error(function(data, status, headers, config) {
 		      console.log(status);
 		});
-	});
-
-	// create the controller and inject Angular's $scope
-	hackerSupply.controller('mainController', function($scope, $http) {
-
 	});
 
 	hackerSupply.controller('itemController', function($scope, $http, $routeParams) {
