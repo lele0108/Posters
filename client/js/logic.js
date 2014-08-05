@@ -25,6 +25,11 @@
 				controller: 'loginController'
 			})
 
+			.when('/buy', {
+				templateUrl: 'pages/buy.html',
+				controller: 'buyController'
+			})
+
 			.when('/admin', {
 				templateUrl: 'pages/admin.html',
 				controller: 'adminController'
@@ -90,6 +95,10 @@
 		    error(function(data, status, headers, config) {
 		      console.log(status);
 		});
+
+	});
+
+	hackerSupply.controller('buyController', function($scope) {
 
 	});
 
