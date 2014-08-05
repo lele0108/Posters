@@ -119,6 +119,8 @@ $blackgray: #464646;
 }
 
 .purchaseItem {
+	position: fixed;
+    width:540px;
 	border: 1px solid $blackgray;
 	padding: 35px;
 	h1 {
@@ -186,6 +188,13 @@ $blackgray: #464646;
 		border-radius: 50%;
 		padding: 5px 11px 5px 11px;
 		font-size:18px;
+	}
+	h4 {
+		font-size:14px;
+	}
+	h3 {
+		margin-top:20px;
+		font-size:16px;
 	}
 }
 
