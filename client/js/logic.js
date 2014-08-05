@@ -25,7 +25,7 @@
 				controller: 'loginController'
 			})
 
-			.when('/buy', {
+			.when('/buy/:itemId', {
 				templateUrl: 'pages/buy.html',
 				controller: 'buyController'
 			})
@@ -98,8 +98,18 @@
 
 	});
 
-	hackerSupply.controller('buyController', function($scope) {
-
+	hackerSupply.controller('buyController', function($scope, $http, $routeParams) {
+		$scope.item = {};
+		var url = "http://hackerposter.herokuapp.com/api/item/" + $routeParams.itemId;
+		console.log(url);
+		$http({method: 'GET', url: url}).
+		    success(function(data, status, headers, config) {
+		      $scope.item = data;
+		      console.log($scope.item);
+		    }).
+		    error(function(data, status, headers, config) {
+		      console.log(status);
+		});
 	});
 
 	hackerSupply.controller('adminController', function($scope) {

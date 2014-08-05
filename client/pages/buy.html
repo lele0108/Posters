@@ -4,7 +4,7 @@
 		<div class="row">
 
 			<div class="col-lg-5">
-
+				<form>
 				<div class="email">
 					<div class="row">
 						<div class="col-lg-2">
@@ -17,12 +17,10 @@
 					<div class="row">
 						<div class="col-lg-10 col-lg-offset-2">
 							<br>
-							<form role="form">
 							  <div class="form-group">
 							    <!--<label for="exampleInputEmail1">Email address</label>-->
 							    <input type="email" class="form-control customInput" id="exampleInputEmail1" placeholder="Email">
 							  </div>
-							</form>
 						</div>
 					</div>
 				</div>
@@ -39,7 +37,6 @@
 					<div class="row">
 						<div class="col-lg-10 col-lg-offset-2">
 							<br>
-							<form role="form">
 							  <div class="form-group">
 							    <!--<label for="exampleInputEmail1">Email address</label>-->
 							    <input type="email" class="form-control customInput" id="exampleInputEmail1" placeholder="Full Name"><br>
@@ -50,7 +47,6 @@
 							    <input type="email" class="form-control customInput" id="exampleInputEmail1" placeholder="Zip Code"><br>
 							    <input type="email" class="form-control customInput" id="exampleInputEmail1" placeholder="Phone"><br>
 							  </div>
-							</form>
 						</div>
 					</div>
 				</div>
@@ -67,21 +63,54 @@
 					<div class="row">
 						<div class="col-lg-10 col-lg-offset-2">
 							<br>
-							<form role="form">
 							  <div class="form-group">
 							    <!--<label for="exampleInputEmail1">Email address</label>-->
 							    <input type="email" class="form-control customInput" id="exampleInputEmail1" placeholder="Name on Card"><br>
 							    <input type="email" class="form-control customInput" id="exampleInputEmail1" placeholder="Credit Card Number"><br>
+							    <div class="row">
+						            <div class="col-lg-6">
+						              <select class="form-control customSelect col-sm-2" name="expiry-month" id="expiry-month">
+						                <option>Month</option>
+						                <option value="01">Jan (01)</option>
+						                <option value="02">Feb (02)</option>
+						                <option value="03">Mar (03)</option>
+						                <option value="04">Apr (04)</option>
+						                <option value="05">May (05)</option>
+						                <option value="06">June (06)</option>
+						                <option value="07">July (07)</option>
+						                <option value="08">Aug (08)</option>
+						                <option value="09">Sep (09)</option>
+						                <option value="10">Oct (10)</option>
+						                <option value="11">Nov (11)</option>
+						                <option value="12">Dec (12)</option>
+						              </select>
+						            </div>
+						            <div class="col-lg-6">
+						              <select class="form-control customSelect" name="expiry-year">
+						                <option value="13">2013</option>
+						                <option value="14">2014</option>
+						                <option value="15">2015</option>
+						                <option value="16">2016</option>
+						                <option value="17">2017</option>
+						                <option value="18">2018</option>
+						                <option value="19">2019</option>
+						                <option value="20">2020</option>
+						                <option value="21">2021</option>
+						                <option value="22">2022</option>
+						                <option value="23">2023</option>
+						              </select>
+						            </div>
+						        </div><br>
 							    <input type="email" class="form-control customInput" id="exampleInputEmail1" placeholder="CVC"><br>
 							    <h4>Item Cost: $32.00</h4>
 							    <h4>Shipping Cost: $4.00</h4>
 							    <h3>Total Cost: $36.00</h3>
 
 							  </div>
-							</form>
 						</div>
 					</div>
 				</div>
+				</form>
 
 				<div class="submitOrder">
 					<div class="row">
@@ -99,13 +128,13 @@
 					<div id="item">
 						<div class="row">
 							<div class="col-lg-3">
-								<img src="img/posters/oneLarge.jpg" width="100%">
+								<img ng-src="{{item.imgLarge}}" width="100%">
 							</div>
 							<div class="col-lg-9">
-								<h3>Experiment. Fail. Learn. Repeat.</h3>
+								<h3>{{item.name}}</h3>
 								<h3>36x24in. Artisan Poster</h3>
 								<h3>1 x $36.00</h3>
-								<button>Remove Item</button>
+								<a href="#item/{{item._id}}"><button>Remove Item</button></a>
 							</div>
 						</div>
 					</div>

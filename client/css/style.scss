@@ -304,6 +304,21 @@ $blackgray: #464646;
   	}
 }
 
+.customSelect {
+	border: 1px solid $blackgray;
+	background: white;
+	-webkit-appearance: none;
+	border-radius:0px !important;
+	outline: none;
+  	box-shadow:none !important;
+  	font-family: 'Raleway', sans-serif;
+  	&:focus {
+  		border:1px solid $blackgray !important;
+  		background-color:$blackgray;
+  		color:white;
+  	}
+}
+
 ::-webkit-input-placeholder {
    	font-family: 'Raleway', sans-serif;
 }

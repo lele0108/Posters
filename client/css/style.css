@@ -230,6 +230,19 @@
     background-color: #464646;
     color: white; }
 
+.customSelect {
+  border: 1px solid #464646;
+  background: white;
+  -webkit-appearance: none;
+  border-radius: 0px !important;
+  outline: none;
+  box-shadow: none !important;
+  font-family: 'Raleway', sans-serif; }
+  .customSelect:focus {
+    border: 1px solid #464646 !important;
+    background-color: #464646;
+    color: white; }
+
 ::-webkit-input-placeholder {
   font-family: 'Raleway', sans-serif; }
 
