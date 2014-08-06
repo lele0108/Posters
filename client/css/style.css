@@ -243,6 +243,9 @@
     background-color: #464646;
     color: white; }
 
+.confirmation {
+  margin-top: 100px; }
+
 ::-webkit-input-placeholder {
   font-family: 'Raleway', sans-serif; }
 

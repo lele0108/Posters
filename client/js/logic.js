@@ -30,6 +30,11 @@
 				controller: 'buyController'
 			})
 
+			.when('/confirmation/:confirmation', {
+				templateUrl: 'pages/confirmation.html',
+				controller: 'confirmationController'
+			})
+
 			.when('/admin', {
 				templateUrl: 'pages/admin.html',
 				controller: 'adminController'
@@ -98,14 +103,57 @@
 
 	});
 
-	hackerSupply.controller('buyController', function($scope, $http, $routeParams) {
+	hackerSupply.controller('buyController', function($scope, $http, $routeParams, $location) {
+		Stripe.setPublishableKey('pk_6lp9e39ut8xka2FbqeGdTHNCF1b0X');
 		$scope.item = {};
+		$scope.details = {};
 		var url = "http://hackerposter.herokuapp.com/api/item/" + $routeParams.itemId;
 		console.log(url);
 		$http({method: 'GET', url: url}).
 		    success(function(data, status, headers, config) {
 		      $scope.item = data;
 		      console.log($scope.item);
+		    }).
+		    error(function(data, status, headers, config) {
+		      console.log(status);
+		});
+		$scope.order = function(user) {
+			console.log(user);
+			var details = angular.copy(user);
+			Stripe.card.createToken({
+			  number: details.card_number,
+			  cvc: details.card_cvc,
+			  exp_month: details.card_month,
+			  exp_year: details.card_year
+			}, stripeResponseHandler);
+			function stripeResponseHandler(status, response) {
+		        if (response.error) {
+		          // Show the errors on the form
+		          console.log("error stripe");
+		        } else {
+		          $http({method: 'POST', url: 'http://hackerposter.herokuapp.com/api/buy', data: {"name": details.name, "address_line1": details.address_line1, "address_line2": details.address_line2, "address_city": details.address_city, "address_state": details.address_state, "address_zip": details.address_zip, "address_country": "US", "email": details.email, "phone": details.phone, "stripe_token": response.id}}).
+				    success(function(data, status, headers, config) {
+				    	var view = "/confirmation/" + data.confirmation;
+				       	$location.path(view); // path not hash
+				    }).
+				    error(function(data, status, headers, config) {
+				      // called asynchronously if an error occurs
+				      // or server returns response with an error status.
+				      console.log(data);
+				  });
+		        }
+		    }
+		};
+	});
+
+	hackerSupply.controller('confirmationController', function($scope, $routeParams, $http) {
+		$scope.information = {};
+		$scope.number = $routeParams.confirmation;
+		var url = 'http://hackerposter.herokuapp.com/api/status/' + $routeParams.confirmation;
+		$http({method: 'GET', url: url}).
+		    success(function(data, status, headers, config) {
+		      $scope.information = data;
+		      console.log($scope.information);
 		    }).
 		    error(function(data, status, headers, config) {
 		      console.log(status);

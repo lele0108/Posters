@@ -19,7 +19,7 @@
 							<br>
 							  <div class="form-group">
 							    <!--<label for="exampleInputEmail1">Email address</label>-->
-							    <input type="email" class="form-control customInput" id="exampleInputEmail1" placeholder="Email">
+							    <input type="email" class="form-control customInput" ng-model="user.email" id="exampleInputEmail1" placeholder="Email">
 							  </div>
 						</div>
 					</div>
@@ -39,13 +39,13 @@
 							<br>
 							  <div class="form-group">
 							    <!--<label for="exampleInputEmail1">Email address</label>-->
-							    <input type="email" class="form-control customInput" id="exampleInputEmail1" placeholder="Full Name"><br>
-							    <input type="email" class="form-control customInput" id="exampleInputEmail1" placeholder="Address"><br>
-							    <input type="email" class="form-control customInput" id="exampleInputEmail1" placeholder="Apt/Suite/etc."><br>
-							    <input type="email" class="form-control customInput" id="exampleInputEmail1" placeholder="City"><br>
-							    <input type="email" class="form-control customInput" id="exampleInputEmail1" placeholder="State"><br>
-							    <input type="email" class="form-control customInput" id="exampleInputEmail1" placeholder="Zip Code"><br>
-							    <input type="email" class="form-control customInput" id="exampleInputEmail1" placeholder="Phone"><br>
+							    <input type="name" class="form-control customInput" ng-model="user.name" id="exampleInputEmail1" placeholder="Full Name"><br>
+							    <input type="address" class="form-control customInput" ng-model="user.address_line1" id="exampleInputEmail1" placeholder="Address"><br>
+							    <input type="address" class="form-control customInput" ng-model="user.address_line2" id="exampleInputEmail1" placeholder="Apt/Suite/etc."><br>
+							    <input type="address" class="form-control customInput" ng-model="user.address_city" id="exampleInputEmail1" placeholder="City"><br>
+							    <input type="address" class="form-control customInput" ng-model="user.address_state" id="exampleInputEmail1" placeholder="State"><br>
+							    <input type="address" class="form-control customInput" ng-model="user.address_zip" id="exampleInputEmail1" placeholder="Zip Code"><br>
+							    <input type="tel" class="form-control customInput" ng-model="user.phone" id="exampleInputEmail1" placeholder="Phone"><br>
 							  </div>
 						</div>
 					</div>
@@ -65,11 +65,11 @@
 							<br>
 							  <div class="form-group">
 							    <!--<label for="exampleInputEmail1">Email address</label>-->
-							    <input type="email" class="form-control customInput" id="exampleInputEmail1" placeholder="Name on Card"><br>
-							    <input type="email" class="form-control customInput" id="exampleInputEmail1" placeholder="Credit Card Number"><br>
+							    <input type="name" class="form-control customInput" ng-model="user.card_name" id="exampleInputEmail1" placeholder="Name on Card"><br>
+							    <input class="form-control customInput" ng-model="user.card_number" id="exampleInputEmail1" placeholder="Credit Card Number"><br>
 							    <div class="row">
 						            <div class="col-lg-6">
-						              <select class="form-control customSelect col-sm-2" name="expiry-month" id="expiry-month">
+						              <select class="form-control customSelect col-sm-2" ng-model="user.card_month" name="expiry-month" id="expiry-month">
 						                <option>Month</option>
 						                <option value="01">Jan (01)</option>
 						                <option value="02">Feb (02)</option>
@@ -86,22 +86,21 @@
 						              </select>
 						            </div>
 						            <div class="col-lg-6">
-						              <select class="form-control customSelect" name="expiry-year">
-						                <option value="13">2013</option>
-						                <option value="14">2014</option>
-						                <option value="15">2015</option>
-						                <option value="16">2016</option>
-						                <option value="17">2017</option>
-						                <option value="18">2018</option>
-						                <option value="19">2019</option>
-						                <option value="20">2020</option>
-						                <option value="21">2021</option>
-						                <option value="22">2022</option>
-						                <option value="23">2023</option>
+						              <select class="form-control customSelect" ng-model="user.card_year" name="expiry-year">
+						                <option value="2014">2014</option>
+						                <option value="2015">2015</option>
+						                <option value="2016">2016</option>
+						                <option value="2017">2017</option>
+						                <option value="2018">2018</option>
+						                <option value="2019">2019</option>
+						                <option value="2020">2020</option>
+						                <option value="2021">2021</option>
+						                <option value="2022">2022</option>
+						                <option value="2023">2023</option>
 						              </select>
 						            </div>
 						        </div><br>
-							    <input type="email" class="form-control customInput" id="exampleInputEmail1" placeholder="CVC"><br>
+							    <input type="number" class="form-control customInput" ng-model="user.card_cvc" id="exampleInputEmail1" placeholder="CVC"><br>
 							    <h4>Item Cost: $32.00</h4>
 							    <h4>Shipping Cost: $4.00</h4>
 							    <h3>Total Cost: $36.00</h3>
@@ -110,15 +109,16 @@
 						</div>
 					</div>
 				</div>
-				</form>
 
 				<div class="submitOrder">
 					<div class="row">
 						<div class="col-lg-10 col-lg-offset-2">
-							<button><center>Submit Order</center></button>
+							<button ng-click="order(user);"><center>Submit Order</center></button>
 						</div>
 					</div>
 				</div>
+
+				</form>
 
 			</div>
 
