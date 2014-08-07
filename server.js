@@ -73,6 +73,7 @@ router.route('/buy')
 		customer.address_country = req.body.address_country;
 		customer.phone = req.body.phone;
 		customer.stripe_token = req.body.stripe_token;
+		customer.itemId = req.body.item;
 		//stripe charge the credit card
 		stripe.charges.create({
 		  amount: 400,
@@ -98,28 +99,29 @@ router.route('/buy')
 			  //async callback for stripe address
 			  customer.lobId = address.id;
 			  if (!err) {
-			  	//lob create job
-			  	Lob.jobs.create({
-				  name: 'Lob Poster Job',
-				  from: 'adr_c20346129f86602e', //Can pass an ID
-				  to: customer.lobId,
-				  objects: ['obj_e67b63dce3e8f6fb']
-				}, function (err, job) {
-				  //async callback for lob job
-				  if (job) {
-					  customer.job = job.id;
-					  console.log(customer.job)
-					  customer.save(function(err) {
-						if (err)
-							res.json(400, { message: err });
-						else 
-							res.json({ message: "Poster has been purchased and sent to printing!", confirmation: customer._id});
-							console.log("SUCCESS");
-					  });
-				  }
-				  else {
-				  	res.json(400, { message: err});
-				  }
+			  	Item.findById(customer.itemId, function(err, item) {
+					Lob.jobs.create({
+					  name: 'Lob Poster Job',
+					  from: 'adr_c20346129f86602e', //Can pass an ID
+					  to: customer.lobId,
+					  objects: [item.lobId]
+					}, function (err, job) {
+					  //async callback for lob job
+					  if (job) {
+						  customer.job = job.id;
+						  console.log(customer.job)
+						  customer.save(function(err) {
+							if (err)
+								res.json(400, { message: err });
+							else 
+								res.json({ message: "Poster has been purchased and sent to printing!", confirmation: customer._id});
+								console.log("SUCCESS");
+						  });
+					  }
+					  else {
+					  	res.json(400, { message: err});
+					  }
+					});
 				});
 			  }
 			  else {
@@ -132,6 +134,28 @@ router.route('/buy')
 		  }
 		});
 		
+	});
+
+// on routes that end in /status/:confirmation
+// ----------------------------------------------------
+router.route('/address')
+
+	// get the bear with that id
+	.post(function(req, res) {
+		console.log(req.body);
+		Lob.verification.verify({
+		  address_line1: req.body.address_line1,
+		  address_line2: req.body.address_line2,
+		  address_city: req.body.address_city,
+		  address_state: req.body.address_state,
+		  address_zip: req.body.address_zip,
+		  address_country: req.body.address_country,
+		}, function (err, result) {
+		  if (err) 
+		  	res.json(400, { message: err });
+		  else 
+		  	res.json({ address: result.address });
+		});
 	});
 
 // on routes that end in /status/:confirmation

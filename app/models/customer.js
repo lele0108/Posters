@@ -7,7 +7,7 @@ var CustomerSchema   = new Schema({
 	address_line2: String,
 	address_city: String,
 	address_state: String,
-	address_zip: Number,
+	address_zip: String,
 	address_country: String,
 	email: String,
 	phone: Number,
@@ -15,6 +15,7 @@ var CustomerSchema   = new Schema({
 	stripe_token: String,
 	charge: Boolean,
 	job: String,
+	itemId: String,
 });
 
 module.exports = mongoose.model('Customer', CustomerSchema);

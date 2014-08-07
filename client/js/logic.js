@@ -65,7 +65,7 @@
 			accessibility: true,
 		});
 		$scope.myItems = {};
-		$http({method: 'GET', url: 'http://hackerposter.herokuapp.com/api/item/'}).
+		$http({method: 'GET', url: '/api/item/'}).
 		    success(function(data, status, headers, config) {
 		      $scope.myItems = data;
 		      console.log($scope.myItems);
@@ -82,7 +82,7 @@
 		$scope.hide = false;
 		$scope.item = {};
 		$scope.reconmend = {};
-		var url = "http://hackerposter.herokuapp.com/api/item/" + $routeParams.itemId;
+		var url = "/api/item/" + $routeParams.itemId;
 		console.log(url);
 		$http({method: 'GET', url: url}).
 		    success(function(data, status, headers, config) {
@@ -92,7 +92,7 @@
 		    error(function(data, status, headers, config) {
 		      console.log(status);
 		});
-		$http({method: 'GET', url: 'http://hackerposter.herokuapp.com/api/item?limit=4'}).
+		$http({method: 'GET', url: '/api/item?limit=4'}).
 		    success(function(data, status, headers, config) {
 		      $scope.reconmend = data;
 		      console.log($scope.item);
@@ -107,7 +107,7 @@
 		Stripe.setPublishableKey('pk_6lp9e39ut8xka2FbqeGdTHNCF1b0X');
 		$scope.item = {};
 		$scope.details = {};
-		var url = "http://hackerposter.herokuapp.com/api/item/" + $routeParams.itemId;
+		var url = "/api/item/" + $routeParams.itemId;
 		console.log(url);
 		$http({method: 'GET', url: url}).
 		    success(function(data, status, headers, config) {
@@ -120,18 +120,29 @@
 		$scope.order = function(user) {
 			console.log(user);
 			var details = angular.copy(user);
-			Stripe.card.createToken({
-			  number: details.card_number,
-			  cvc: details.card_cvc,
-			  exp_month: details.card_month,
-			  exp_year: details.card_year
-			}, stripeResponseHandler);
+			var address = {};
+			$http({method: 'POST', url: '/api/address', data: {"address_line1": details.address_line1, "address_line2": details.address_line2, "address_city": details.address_city, "address_state": details.address_state, "address_zip": details.address_zip, "address_country": "US",}}).
+				    success(function(data, status, headers, config) {
+				    	address = data.address;
+				    	console.log(address);
+						Stripe.card.createToken({
+						  number: details.card_number,
+						  cvc: details.card_cvc,
+						  exp_month: details.card_month,
+						  exp_year: details.card_year
+						}, stripeResponseHandler);
+				    }).
+				    error(function(data, status, headers, config) {
+				      // called asynchronously if an error occurs
+				      // or server returns response with an error status.
+				      console.log("address incorrect");
+			});
 			function stripeResponseHandler(status, response) {
 		        if (response.error) {
 		          // Show the errors on the form
 		          console.log("error stripe");
 		        } else {
-		          $http({method: 'POST', url: 'http://hackerposter.herokuapp.com/api/buy', data: {"name": details.name, "address_line1": details.address_line1, "address_line2": details.address_line2, "address_city": details.address_city, "address_state": details.address_state, "address_zip": details.address_zip, "address_country": "US", "email": details.email, "phone": details.phone, "stripe_token": response.id}}).
+		          $http({method: 'POST', url: '/api/buy', data: {"item": $routeParams.itemId, "name": details.name, "address_line1": address.address_line1, "address_line2": address.address_line2, "address_city": address.address_city, "address_state": address.address_state, "address_zip": address.address_zip, "address_country": "US", "email": details.email, "phone": details.phone, "stripe_token": response.id}}).
 				    success(function(data, status, headers, config) {
 				    	var view = "/confirmation/" + data.confirmation;
 				       	$location.path(view); // path not hash
@@ -149,7 +160,7 @@
 	hackerSupply.controller('confirmationController', function($scope, $routeParams, $http) {
 		$scope.information = {};
 		$scope.number = $routeParams.confirmation;
-		var url = 'http://hackerposter.herokuapp.com/api/status/' + $routeParams.confirmation;
+		var url = '/api/status/' + $routeParams.confirmation;
 		$http({method: 'GET', url: url}).
 		    success(function(data, status, headers, config) {
 		      $scope.information = data;

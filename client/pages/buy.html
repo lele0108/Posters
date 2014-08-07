@@ -42,9 +42,9 @@
 							    <input type="name" class="form-control customInput" ng-model="user.name" id="exampleInputEmail1" placeholder="Full Name"><br>
 							    <input type="address" class="form-control customInput" ng-model="user.address_line1" id="exampleInputEmail1" placeholder="Address"><br>
 							    <input type="address" class="form-control customInput" ng-model="user.address_line2" id="exampleInputEmail1" placeholder="Apt/Suite/etc."><br>
+							    <input type="address" class="form-control customInput" ng-model="user.address_zip" id="exampleInputEmail1" placeholder="Zip Code"><br>
 							    <input type="address" class="form-control customInput" ng-model="user.address_city" id="exampleInputEmail1" placeholder="City"><br>
 							    <input type="address" class="form-control customInput" ng-model="user.address_state" id="exampleInputEmail1" placeholder="State"><br>
-							    <input type="address" class="form-control customInput" ng-model="user.address_zip" id="exampleInputEmail1" placeholder="Zip Code"><br>
 							    <input type="tel" class="form-control customInput" ng-model="user.phone" id="exampleInputEmail1" placeholder="Phone"><br>
 							  </div>
 						</div>
@@ -69,8 +69,8 @@
 							    <input class="form-control customInput" ng-model="user.card_number" id="exampleInputEmail1" placeholder="Credit Card Number"><br>
 							    <div class="row">
 						            <div class="col-lg-6">
-						              <select class="form-control customSelect col-sm-2" ng-model="user.card_month" name="expiry-month" id="expiry-month">
-						                <option>Month</option>
+						              <select class="form-control customSelect col-sm-2" placeholder="Exp. Month" ng-model="user.card_month" name="expiry-month" id="expiry-month">
+						              	<option selected="selected" disabled="disabled">Expiry Month</option>
 						                <option value="01">Jan (01)</option>
 						                <option value="02">Feb (02)</option>
 						                <option value="03">Mar (03)</option>
@@ -86,7 +86,8 @@
 						              </select>
 						            </div>
 						            <div class="col-lg-6">
-						              <select class="form-control customSelect" ng-model="user.card_year" name="expiry-year">
+						              <select class="form-control customSelect" placeholder="Exp. Year" ng-model="user.card_year" name="expiry-year">
+						              	<option selected="selected" disabled="disabled">Expiry Year</option>
 						                <option value="2014">2014</option>
 						                <option value="2015">2015</option>
 						                <option value="2016">2016</option>
@@ -100,7 +101,7 @@
 						              </select>
 						            </div>
 						        </div><br>
-							    <input type="number" class="form-control customInput" ng-model="user.card_cvc" id="exampleInputEmail1" placeholder="CVC"><br>
+							    <input type="password" class="form-control customInput" ng-model="user.card_cvc" id="exampleInputEmail1" placeholder="CVC"><br>
 							    <h4>Item Cost: $32.00</h4>
 							    <h4>Shipping Cost: $4.00</h4>
 							    <h3>Total Cost: $36.00</h3>
